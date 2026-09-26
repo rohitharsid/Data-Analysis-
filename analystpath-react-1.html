@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AnalystPath: Excel, SQL, Power BI & Python — Job-Ready Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sql.js@1.10.3/dist/sql-wasm.js"></script>
+<style>
+:root{
+  --bg:#F5F7FB;--surface:#FFFFFF;--ink:#141B2D;--muted:#586178;--line:#DCE2EE;
+  --accent:#2547F5;--accent-ink:#FFFFFF;--soft:#EBEFFA;--hi:#FFD84D;--ok:#0F7B55;--bad:#B3261E;
+  --code:#0E1527;--code-ink:#E3E9FF;--grid:rgba(37,71,245,.07);
+  --excel:#1D7A46;--sql:#B15A00;--python:#2547F5;--powerbi:#A32C82;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C1120;--surface:#141B30;--ink:#E8ECF8;--muted:#9AA5C0;--line:#26304C;
+    --accent:#8AA0FF;--accent-ink:#0C1120;--soft:#1B2440;--ok:#4CD6A0;--bad:#FF8A80;
+    --code:#080D1A;--grid:rgba(138,160,255,.07);
+    --excel:#4CD68F;--sql:#F0A94E;--python:#8AA0FF;--powerbi:#E792CC;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C1120;--surface:#141B30;--ink:#E8ECF8;--muted:#9AA5C0;--line:#26304C;
+  --accent:#8AA0FF;--accent-ink:#0C1120;--soft:#1B2440;--ok:#4CD6A0;--bad:#FF8A80;
+  --code:#080D1A;--grid:rgba(138,160,255,.07);
+  --excel:#4CD68F;--sql:#F0A94E;--python:#8AA0FF;--powerbi:#E792CC;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 112px);-webkit-text-size-adjust:100%;height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body);height:100%}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;letter-spacing:-.02em}
+h1{font-weight:800;font-size:clamp(2rem,7vw,3.4rem)}
+h2{font-weight:800;font-size:clamp(1.4rem,4.5vw,2rem);margin-bottom:.4rem}
+h3{font-weight:600;font-size:1.08rem}
+p{margin:0 0 .8rem}
+a{color:var(--accent)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 16px}
+
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:12px;padding:10px 0}
+.brand{font-family:var(--display);font-weight:800;font-size:1.2rem;letter-spacing:-.03em;display:flex;align-items:center;gap:8px;background:none;border:0;padding:0}
+.brand i{display:inline-block;width:22px;height:22px;border-radius:5px;background:var(--accent);position:relative}
+.brand i::after{content:"";position:absolute;inset:5px;border:2px solid var(--accent-ink);border-radius:2px;border-right-color:transparent;border-bottom-color:transparent}
+.prog{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:.84rem;color:var(--muted)}
+.meter{width:80px;height:8px;background:var(--soft);border-radius:99px;overflow:hidden;flex:none}
+.meter b{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .3s}
+.icon-btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;width:36px;height:36px;display:grid;place-items:center;flex:none}
+nav.tabs{display:flex;gap:4px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs button{white-space:nowrap;border:1px solid transparent;background:none;padding:7px 12px;border-radius:8px;font-weight:500;color:var(--muted);flex:none}
+nav.tabs button[aria-current="page"]{background:var(--ink);color:var(--bg)}
+nav.tabs button:not([aria-current="page"]):hover{background:var(--soft);color:var(--ink)}
+
+main{padding:26px 0 56px;min-height:70vh}
+.sec-head{margin-bottom:18px}
+.sec-head p{color:var(--muted);max-width:62ch}
+
+.hero{display:grid;gap:26px;padding:6px 0 34px}
+.hero-grid{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:32px 32px;border:1px solid var(--line);border-radius:14px;padding:22px 18px}
+.hero p.lead{font-size:1.08rem;color:var(--muted);max-width:54ch;margin:14px 0 20px}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:9px;font-weight:600;text-decoration:none;display:inline-block}
+.btn.alt{background:transparent;color:var(--ink)}
+.btn.sm{padding:6px 12px;font-size:.85rem}
+.btn:hover{opacity:.88}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+
+.streakbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 0}
+.streak{display:inline-flex;align-items:center;gap:6px;font-weight:600;border:1px solid var(--line);background:var(--surface);padding:5px 12px;border-radius:99px;font-size:.85rem}
+.banner{border:1px solid var(--line);background:var(--soft);border-radius:10px;padding:10px 14px;font-size:.9rem;margin:14px 0 0}
+
+.toolgrid{display:grid;gap:10px;grid-template-columns:repeat(2,1fr);margin-top:16px}
+.toolcard{border:1px solid var(--line);background:var(--surface);border-radius:11px;padding:13px 14px;text-align:left}
+.toolcard b{display:flex;align-items:center;gap:8px;font-family:var(--display);font-size:1rem}
+.toolcard .dot{width:9px;height:9px;border-radius:50%;flex:none}
+.toolcard span{color:var(--muted);font-size:.86rem;display:block;margin-top:4px}
+
+.list-table{border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
+.lt-row{display:flex;gap:14px;align-items:baseline;padding:14px 16px;border-bottom:1px solid var(--line);width:100%;text-align:left;background:none;border-left:0;border-right:0;border-top:0}
+.lt-row:last-child{border-bottom:0}
+.lt-row:hover{background:var(--soft)}
+.lt-row strong{min-width:120px;font-family:var(--display);font-size:1.02rem}
+.lt-row span{color:var(--muted);font-size:.93rem}
+.two{display:grid;gap:22px;margin-top:32px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.chip{display:inline-block;font-size:.78rem;padding:2px 9px;border-radius:99px;background:var(--soft);color:var(--ink);margin:0 6px 6px 0;border:1px solid var(--line)}
+.tchip{border-radius:99px;font-size:.72rem;font-weight:600;padding:2px 9px;color:#fff;display:inline-block}
+.muted{color:var(--muted)}
+.small{font-size:.87rem}
+
+details.row{background:var(--surface);border:1px solid var(--line);border-radius:10px;margin-bottom:8px}
+details.row>summary{list-style:none;display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;flex-wrap:wrap}
+details.row>summary::-webkit-details-marker{display:none}
+details.row>summary::after{content:"";margin-left:auto;width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .15s;flex:none}
+details.row[open]>summary::after{transform:rotate(-135deg)}
+details.row.done{border-color:color-mix(in srgb,var(--ok) 50%,var(--line))}
+details.row.done .ttl{color:var(--muted);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--muted) 50%,transparent)}
+.dn{font-family:var(--mono);font-size:.78rem;color:var(--muted);min-width:44px}
+.ttl{font-weight:600}
+.body{padding:2px 16px 16px 16px;border-top:1px solid var(--line)}
+.body h4{margin:14px 0 4px;font-size:.9rem;font-family:var(--display)}
+.body ul{margin:0;padding-left:1.1rem}
+.body li{margin:2px 0}
+input[type=checkbox]{width:20px;height:20px;accent-color:var(--accent);flex:none;cursor:pointer}
+label.ck{display:flex;gap:10px;align-items:flex-start;padding:5px 0;cursor:pointer}
+label.ck.on span{color:var(--muted);text-decoration:line-through}
+.notes textarea{width:100%;font:inherit;font-size:.88rem;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);resize:vertical;min-height:56px;margin-top:4px}
+.notes label{font-size:.82rem;color:var(--muted);font-weight:600}
+
+.week-h{display:flex;align-items:center;gap:12px;margin:24px 0 10px;flex-wrap:wrap}
+.week-h h3{font-size:1.2rem}
+.week-h .meter{width:110px}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.pill{border:1px solid var(--line);background:var(--surface);padding:5px 13px;border-radius:99px;font-size:.89rem;display:flex;align-items:center;gap:6px}
+.pill[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pill .dot{width:7px;height:7px;border-radius:50%}
+input[type=search],input[type=text],input[type=date],select,textarea{font:inherit;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);min-width:0}
+input[type=search]{flex:1 1 180px}
+
+pre{background:var(--code);color:var(--code-ink);font:400 .83rem/1.55 var(--mono);padding:14px;border-radius:9px;overflow-x:auto;margin:6px 0 0;tab-size:2}
+.cb{position:relative}
+.cb .cp{position:absolute;top:12px;right:6px;border:1px solid #3a466b;background:#1a2340;color:#c9d3f5;border-radius:6px;font-size:.74rem;padding:2px 8px}
+.cheat-grid{display:grid;gap:12px}
+.cheat-grid .card h3{font-size:.96rem;margin-bottom:2px}
+
+.qbox{max-width:680px}
+.opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:var(--surface);padding:11px 14px;border-radius:9px;margin-bottom:8px;font-family:var(--mono);font-size:.86rem}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,var(--surface))}
+.opt.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,var(--surface))}
+.expl{border-left:3px solid var(--accent);padding:4px 12px;margin:12px 0;background:var(--soft);border-radius:0 8px 8px 0}
+.qmeta{display:flex;justify-content:space-between;color:var(--muted);font-size:.87rem;margin-bottom:8px}
+.big{font-family:var(--display);font-weight:800;font-size:2.8rem;line-height:1}
+
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:99px;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50}
+.toast.show{opacity:1}
+footer{border-top:1px solid var(--line);padding:20px 0 30px;color:var(--muted);font-size:.87rem}
+.linkgrid{display:grid;gap:8px}
+.linkgrid a{display:block;padding:10px 14px;border:1px solid var(--line);border-radius:9px;background:var(--surface);text-decoration:none;color:var(--ink)}
+.linkgrid a small{display:block;color:var(--muted)}
+.linkgrid a:hover{border-color:var(--accent)}
+.loading{padding:60px 0;text-align:center;color:var(--muted);font-family:var(--mono)}
+
+.apptable{width:100%;border-collapse:collapse;font-size:.86rem;margin-top:10px}
+.apptable th,.apptable td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+.apptable th{color:var(--muted);font-weight:600;font-size:.78rem}
+.appform{display:grid;gap:8px;grid-template-columns:1fr;margin-top:10px}
+.status-pill{font-size:.72rem;padding:2px 8px;border-radius:99px;background:var(--soft);border:1px solid var(--line)}
+.kw-yes{color:var(--ok);font-weight:600}
+.kw-no{color:var(--bad)}
+.kwgrid{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.sandbox textarea{width:100%;font-family:var(--mono);font-size:.85rem;padding:10px;border-radius:9px;border:1px solid var(--line);background:var(--code);color:var(--code-ink);min-height:110px}
+.err{color:var(--bad);font-family:var(--mono);font-size:.83rem;white-space:pre-wrap;margin-top:8px}
+.resultwrap{overflow-x:auto;margin-top:10px}
+.resultwrap table{border-collapse:collapse;width:100%;font-size:.85rem}
+.resultwrap th,.resultwrap td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;font-family:var(--mono)}
+.resultwrap th{background:var(--bg);color:var(--muted);font-size:.75rem}
+.iconbtn-row{display:flex;gap:6px}
+.del{border:1px solid var(--line);background:var(--surface);border-radius:7px;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;color:var(--bad);flex:none}
+
+@media (min-width:720px){
+  .hero{grid-template-columns:1fr}
+  .toolgrid{grid-template-columns:repeat(4,1fr)}
+  .two{grid-template-columns:1fr 1fr}
+  .cheat-grid{grid-template-columns:1fr 1fr}
+  .linkgrid{grid-template-columns:1fr 1fr}
+  .appform{grid-template-columns:1.4fr 1.4fr 1fr 1fr auto}
+}
+@media (max-width:480px){.toolgrid{grid-template-columns:1fr 1fr}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="root"><div class="loading">Loading AnalystPath…</div></div>
+<div class="toast" id="toastEl" role="status"></div>
+
+<script type="text/babel" data-presets="react">
+const {useState,useEffect,useMemo,useRef} = React;
+
+/* ---------------- persistence ---------------- */
+function loadState(){
+  const base={days:{},steps:{},career:{},cards:{},best:{},notes:{},apps:[],activity:{},startDate:null,quizWrong:{}};
+  try{const r=localStorage.getItem('ap2');if(r)return Object.assign(base,JSON.parse(r))}catch(e){}
+  return base;
+}
+function saveState(s){try{localStorage.setItem('ap2',JSON.stringify(s))}catch(e){}}
+function toast(msg){
+  const el=document.getElementById('toastEl');
+  el.textContent=msg;el.classList.add('show');
+  clearTimeout(toast._t);toast._t=setTimeout(()=>el.classList.remove('show'),1300);
+}
+function copyText(t,btn){
+  const done=()=>{const old=btn.textContent;btn.textContent='Copied';setTimeout(()=>btn.textContent=old,1200)};
+  try{navigator.clipboard.writeText(t).then(done,fallback)}catch(e){fallback()}
+  function fallback(){
+    const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');done()}catch(x){toast('Copy not available here')}
+    ta.remove();
+  }
+}
+function todayStr(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function daysBetween(a,b){return Math.round((new Date(b)-new Date(a))/86400000)}
+
+/* ---------------- tool meta ---------------- */
+const TOOLS={
+  Excel:{color:'var(--excel)',blurb:'Spreadsheets, formulas, PivotTables and dashboards — the tool every analyst opens first.'},
+  SQL:{color:'var(--sql)',blurb:'Query databases directly: joins, aggregation, window functions and data modeling.'},
+  Python:{color:'var(--python)',blurb:'Clean, analyse and visualise data at scale with Pandas, NumPy and statistics.'},
+  'Power BI':{color:'var(--powerbi)',blurb:'Turn analysis into interactive, shareable dashboards stakeholders actually use.'}
+};
+
+/* ---------------- roadmap data ---------------- */
+const EXCEL=[
+['Interface & basic formulas',['Ribbon, cells, sheets and workbook basics','Number formats and cell formatting','SUM, AVERAGE, COUNT, COUNTA, MIN, MAX'],'Build a personal budget sheet with categories. Use SUM for totals and AVERAGE for monthly spend.'],
+['Cell references & logical functions',['Relative vs absolute references ($A$1)','IF and nested IF','AND, OR combined with IF'],'Build a grading sheet: nested IF assigns A/B/C/F, and AND/OR flags students who need review.'],
+['Lookup functions',['VLOOKUP and its limits','INDEX + MATCH','XLOOKUP and IFERROR for clean error handling'],'Build a product lookup: given a product ID, return its price and category with XLOOKUP.'],
+['Text & date functions',['LEFT, RIGHT, MID, LEN','CONCATENATE / TEXTJOIN, TRIM, CLEAN','DATE, YEAR, MONTH, EDATE, TEXT formatting'],'Clean a messy exported customer list: split names, standardise dates, build mailing labels with TEXTJOIN.'],
+['Sort, filter & data validation',['Custom sort (multiple levels)','AutoFilter vs Advanced Filter','Data validation dropdowns, conditional formatting rules'],'On a sales list, add a validated status dropdown, filter to this quarter, and highlight orders over target.'],
+['PivotTables & PivotCharts',['Building a PivotTable: rows, columns, values, filters','Grouping dates (by month/quarter)','Calculated fields and PivotCharts'],'Turn a raw sales export into a PivotTable of revenue by month and region, plus a PivotChart.'],
+['Dashboard project',['Combining PivotTables and slicers','Form controls for interactivity','Dashboard layout: most important number top-left'],'Project: build a one-page Excel dashboard with KPI cells, a trend chart, a regional breakdown and slicers.']
+];
+const SQL=[
+['Setup & SELECT basics',['DB Browser for SQLite or an online SQL sandbox','SELECT, FROM, WHERE, ORDER BY, LIMIT','DISTINCT'],'Load a sample table and write 8 basic SELECT / WHERE / ORDER BY queries.'],
+['Aggregation',['COUNT, SUM, AVG, MIN, MAX','GROUP BY','HAVING vs WHERE'],'Compute total revenue and order count per category, then filter to categories over $10,000 with HAVING.'],
+['JOINs',['INNER JOIN','LEFT JOIN','Joining 3+ tables, table aliases'],'Join customers, orders and order_items to find each customer\u2019s total spend.'],
+['Subqueries',['Subquery in WHERE','Subquery in FROM','Correlated subqueries'],'Find customers who spent more than the average customer, using a subquery.'],
+['CTEs',['The WITH clause','Chaining multiple CTEs','Why CTEs read better than nested subqueries'],'Rewrite yesterday\u2019s subquery as a CTE, then add a second CTE that ranks customers by spend.'],
+['Window functions',['ROW_NUMBER, RANK, DENSE_RANK','PARTITION BY vs GROUP BY','LAG / LEAD for period-over-period change'],'Rank products by revenue within each category, and compute month-over-month change with LAG.'],
+['CASE, strings & dates',['CASE WHEN for buckets/labels','String functions (substr, replace, length)','Date functions and strftime'],'Bucket orders into small/medium/large with CASE WHEN, then summarise revenue by month with strftime.'],
+['Set operations & NULLs',['UNION vs UNION ALL','INTERSECT / EXCEPT concept','IS NULL, COALESCE'],'Combine two customer lists with UNION, then use COALESCE to fill missing phone numbers with "N/A".'],
+['Views & basic performance',['CREATE VIEW','Why indexes speed up lookups','Reading a basic EXPLAIN QUERY PLAN'],'Create a view that summarises monthly revenue, then query it like a normal table.'],
+['Data modeling basics',['Primary keys and foreign keys','Normalisation (1NF\u20133NF), at a high level','Star schema for analytics'],'Sketch a schema for an e-commerce database: customers, orders, products and their relationships.'],
+['Practice day',['Timed practice, interview-style questions','Explaining your query out loud'],'Answer 20 SQL business questions from the practice set before checking any notes. Try the SQL Sandbox tab.'],
+['Project: SQL business analysis',['Applying every clause learned this week','Writing insights from query results'],'Complete the SQL business analysis project: 15\u201320 questions with commented queries and a README of insights.']
+];
+const PY=[
+['Setup, variables and first code',['Google Colab (no install) or Anaconda + Jupyter','Variables, numbers, strings, print(), f-strings','Running and restarting notebook cells'],'Write a script that takes 5 meal prices and prints the subtotal, a 10% tip and the total.'],
+['Data types and operators',['int, float, str, bool and type()','Arithmetic, comparison and logical operators','Converting types: int(), float(), str()'],'Build a BMI calculator and a grade classifier (A/B/C) using if/elif/else.'],
+['Lists and tuples',['Indexing, slicing, append, remove, sort','Tuples and why immutability matters','Built-ins: len, sum, min, max, sorted'],'Store 12 monthly sales numbers. Find the best month, worst month and average without libraries.'],
+['Dictionaries, sets and loops',['dict keys/values/items, sets for unique values','for and while loops, break/continue','Looping over dictionaries'],'Write a word-frequency counter for any paragraph of text.'],
+['Functions and comprehensions',['def, arguments, return values, default args','lambda functions','List and dict comprehensions'],'Write clean_price("$1,299.50") that returns 1299.5, then apply it to a list of 10 messy prices.'],
+['Files and error handling',['open() with "with", reading and writing text','csv and json modules','try / except / finally'],'Read a CSV of expenses. Skip malformed rows with try/except and print how many were skipped.'],
+['Mini project: expense tracker',['Combine everything from week 1','Group spending by category with a dict','Print a clean text report'],'Build the expense tracker: read expenses.csv, total by category, show the top 3. Push to GitHub.'],
+['NumPy essentials',['Arrays, dtype, shape, reshape','Vectorised math vs loops','Indexing, boolean masks, mean/std, axis=0/1'],'Generate 1,000 random daily sales values. Compute the mean, std and a z-score for each day.'],
+['Pandas: Series and DataFrames',['Create DataFrames, read_csv, read_excel','head(), info(), describe(), shape, columns','Selecting columns'],'Load any CSV from Kaggle and answer: rows, columns, dtypes, missing values, numeric ranges.'],
+['Selecting and filtering',['loc vs iloc','Boolean masks with & and |','isin, between, query, str.contains'],'On the Superstore dataset, answer 10 filtering questions (e.g. orders over $500 in the West).'],
+['Sorting, groupby and aggregation',['sort_values, value_counts, nlargest','groupby + agg with named aggregation','Multiple group keys'],'Compute revenue, profit and profit margin by category and region.'],
+['Merge, join and pivot',['merge (inner/left), concat','pivot_table, melt, crosstab','Checking row counts after a join'],'Join orders with customers. Build a pivot of revenue by month \u00d7 region.'],
+['Data cleaning',['isna, fillna, dropna, duplicated, drop_duplicates','astype, to_datetime, str.strip/lower/replace','Outliers with the IQR rule'],'Clean a messy dataset and write a cleaning_log.md explaining every decision.'],
+['Project: clean a messy dataset',['Profile, clean, validate, document','Before/after quality report'],'Complete the data-cleaning project and publish it on GitHub.'],
+['Matplotlib basics',['Figure and axes, plot, bar, labels, titles','Formatting dates on axes','Saving figures'],'Draw a monthly revenue line chart and a category bar chart, both fully labelled.'],
+['Seaborn statistical charts',['histplot, boxplot, violinplot, countplot','Correlation heatmap','Themes and palettes'],'Plot a correlation heatmap and boxplots of profit by category.'],
+['EDA workflow',['Ask questions first, then explore','Distributions, correlations, outliers, segments','Writing findings as sentences with numbers'],'Run a full EDA on a new dataset. Finish with 5 findings, each with a number.'],
+['Interactive charts with Plotly',['plotly.express line, bar, scatter, treemap','Hover data, animation frames','Exporting to HTML'],'Recreate two of your charts in Plotly and add hover details.'],
+['Statistics for analysts',['Mean, median, std, percentiles','Correlation and confounders','t-test, chi-square, p-values and confidence intervals'],'Run a two-sample t-test and report the result in one plain-English sentence.'],
+['Project: sales analysis',['Full EDA on a sales dataset','One-page insights and recommendations'],'Complete the e-commerce sales analysis project end to end.']
+];
+const PBI=[
+['Interface & connecting data',['Power BI Desktop tour','Connecting to Excel, CSV and SQL sources','Power Query Editor, first look'],'Connect Power BI to a CSV or Excel sales file and load it into the model.'],
+['Power Query — cleaning',['Remove/rename columns, change data types','Split columns, remove duplicates','Applied steps and reordering them'],'Clean a messy sales export in Power Query: fix types, remove blank rows, split a combined name column.'],
+['Data modeling',['Relationships between tables','Star schema: fact vs dimension tables','Cardinality and cross-filter direction'],'Build a star schema: one fact table (sales) linked to date, product and region dimension tables.'],
+['DAX basics',['Calculated columns vs measures','SUM, AVERAGE, COUNTROWS','Implicit vs explicit measures'],'Write measures for Total Revenue, Total Orders and Average Order Value.'],
+['DAX intermediate',['CALCULATE and FILTER','ALL to ignore filters','Time intelligence: TOTALYTD, SAMEPERIODLASTYEAR'],'Add a Year-to-Date revenue measure and a year-over-year growth % measure.'],
+['Core visuals',['Bar, column and line charts','Cards, tables and matrices','Formatting, themes and consistent colour'],'Build a page with KPI cards, a monthly trend line and a table broken down by region.'],
+['Interactivity',['Slicers and cross-filtering','Drill-through pages','Tooltips and bookmarks'],'Add slicers for date and region, and a drill-through page from region to product detail.'],
+['Publish project',['Publishing to Power BI Service (or exporting)','Sharing basics','Writing a walkthrough for stakeholders'],'Project: publish the executive sales dashboard and write a short walkthrough of the key insights.']
+];
+function buildMaster(){
+  let day=0,out=[];
+  [['Excel',EXCEL],['SQL',SQL],['Python',PY],['Power BI',PBI]].forEach(([tool,arr])=>{
+    arr.forEach((d,i)=>{day++;out.push({day,tool,trackDay:i+1,trackLen:arr.length,title:d[0],topics:d[1],task:d[2]})});
+  });
+  return out;
+}
+const MASTER=buildMaster();
+const TOTAL_DAYS=MASTER.length;
+
+/* ---------------- projects ---------------- */
+const PROJECTS=[
+{id:'p0',tier:'Foundations',tool:'Excel',name:'Excel sales dashboard with PivotTables',data:'Any Kaggle sales CSV (e.g. Superstore), opened directly in Excel',skills:['PivotTables','Slicers','Charts','Formulas'],deliver:'A one-page .xlsx dashboard with KPI cells, a trend chart and slicers',steps:['Import the CSV and set correct data types','Build a PivotTable of revenue by month and region','Add a PivotChart for the monthly trend','Add KPI cells with SUM/AVERAGE formulas at the top','Insert slicers so one click filters every visual','Clean up layout: KPIs top-left, charts below'],talk:'"I built the whole dashboard so one slicer click updates every chart, which is what stakeholders expect."'},
+{id:'p1',tier:'Foundations',tool:'SQL',name:'SQL business analysis on a retail or music store',data:'Chinook or Northwind sample database (SQLite)',skills:['JOINs','CTEs','Window functions','Subqueries'],deliver:'15\u201320 business questions answered in commented .sql files',steps:['Load the database in DB Browser for SQLite','Write 5 basic questions (SELECT, WHERE, GROUP BY)','Write 5 JOIN questions (top customers, revenue by country)','Write 4 CTE/subquery questions (above-average customers)','Write 4 window-function questions (rank, running total, MoM)','Add a README with 3 insights and the queries behind them'],talk:'"I used a window function to rank products within each category and found the top one drives 40% of category revenue."'},
+{id:'p2',tier:'Foundations',tool:'Python',name:'Clean a messy customer or sales dataset',data:'Kaggle "Customer Personality Analysis" or any raw CSV with nulls and duplicates',skills:['Pandas','Missing values','Outliers','Dates & text'],deliver:'Cleaned dataset + a cleaning log documenting every decision',steps:['State the business question the data could answer','Profile it: shape, dtypes, null counts, duplicates','Fix types, dates and inconsistent text','Handle missing values and outliers, noting why for each choice','Save the clean CSV and cleaning_log.md','Write a README with before/after quality stats'],talk:'"I documented each cleaning decision, for example why I imputed with the median instead of dropping 8% of rows."'},
+{id:'p3',tier:'Core analyst work',tool:'Python',name:'E-commerce sales analysis',data:'Superstore or Olist (Brazilian e-commerce) datasets',skills:['EDA','groupby','Seasonality','Profit vs discount'],deliver:'Notebook + one-page insights and recommendations',steps:['Write 5 business questions before touching the data','Clean and add features (month, margin, delivery days)','Analyse revenue, profit and seasonality','Test how discount level affects profit','Build 5 clear charts','Write recommendations with numbers, not adjectives'],talk:'"Orders with discounts above 30% lost money on average, so I recommended capping discounts and estimated the margin gain."'},
+{id:'p4',tier:'Core analyst work',tool:'Power BI',name:'Power BI executive dashboard',data:'The same sales data from the e-commerce project',skills:['DAX','KPIs','Filters','Storytelling'],deliver:'Published dashboard, screenshots and a short walkthrough',steps:['Model the data (fact and dimension tables)','Build KPI cards: revenue, profit, margin, orders','Add trends, top-N and regional views with slicers','Write a year-over-year measure in DAX','Design the layout: most important number top-left','Publish, screenshot and record a 60-second walkthrough'],talk:'"An executive should know the state of the business in five seconds, so I put four KPIs on top and drill-downs below."'},
+{id:'p5',tier:'Core analyst work',tool:'Python',name:'Customer segmentation with RFM',data:'Online Retail II (UCI Machine Learning Repository)',skills:['RFM scoring','Cohorts','Retention','Segments'],deliver:'Named segments with a marketing action for each',steps:['Compute recency, frequency and monetary value per customer','Score each metric 1\u20135 with quintiles','Label segments (Champions, Loyal, At Risk, Lost)','Build a cohort retention table and heatmap','Calculate the revenue share of each segment','Write one marketing action per segment'],talk:'"The top 12% of customers produced 55% of revenue. I proposed a win-back campaign for the At Risk group."'},
+{id:'p6',tier:'Advanced',tool:'Python',name:'A/B test analysis',data:'Kaggle "Marketing A/B Testing" or "Cookie Cats"',skills:['Hypothesis tests','p-values','Confidence intervals','Sample size'],deliver:'Ship or do-not-ship recommendation with statistical backing',steps:['State hypothesis, primary metric and alpha up front','Check groups are balanced (sample ratio mismatch)','Run the right test (z-test, t-test or chi-square)','Report effect size and a confidence interval','Do a power / sample-size calculation','Write the recommendation for a non-technical reader'],talk:'"The lift was 1.2%, but the confidence interval crossed zero, so I recommended running longer instead of shipping."'},
+{id:'p7',tier:'Advanced',tool:'Python',name:'Churn analysis for telecom or SaaS',data:'Telco Customer Churn (IBM sample dataset on Kaggle)',skills:['Feature analysis','Logistic regression','Drivers of churn'],deliver:'Top churn drivers and a retention strategy',steps:['Explore churn rate by contract, tenure and charges','Encode categorical variables','Fit a logistic regression baseline','Interpret coefficients and odds ratios','Rank the top 3\u20135 drivers of churn','Propose a retention plan with estimated savings'],talk:'"Month-to-month customers in their first year churned at 3\u00d7 the average, so I proposed an onboarding offer aimed at them."'},
+{id:'p8',tier:'Capstone',tool:'All tools',name:'End-to-end pipeline in your own domain',data:'Your choice: jobs, real estate, sports, finance or health, via API, scraping or open data',skills:['SQL','Python','Power BI','Excel'],deliver:'Repository + dashboard + a written summary of findings',steps:['Choose a domain that matches the jobs you want, and write the question','Collect data via API, scraping or download','Store it in SQLite with clean tables','Clean and analyse using SQL + Pandas','Build a Power BI (or Excel) dashboard','Publish on GitHub and write a short post about it'],talk:'"I built the whole pipeline myself, from collecting data to presenting recommendations."'}
+];
+
+/* ---------------- quiz ---------------- */
+const QUIZ=[
+{c:'Excel',q:'Which function looks up a value and can search in any direction?',o:['VLOOKUP','XLOOKUP','HLOOKUP only','SUMIF'],a:1,e:'XLOOKUP can look left or right and defaults to exact match, unlike VLOOKUP.'},
+{c:'Excel',q:'What does pressing F4 do after clicking a cell reference?',o:['Deletes the cell','Cycles through relative/absolute reference styles ($A$1, A$1, $A1, A1)','Opens formatting','Sorts the column'],a:1,e:'F4 toggles the $ signs so you can quickly lock rows, columns, or both.'},
+{c:'Excel',q:'Best tool to summarise 50,000 rows by category and month?',o:['Nested IF formulas','A PivotTable','Conditional formatting','Freeze panes'],a:1,e:'PivotTables summarise large data by drag-and-drop without writing formulas.'},
+{c:'Excel',q:'SUMIFS vs SUMIF?',o:['No difference','SUMIFS supports multiple criteria, SUMIF only one','SUMIF is newer','SUMIFS only works on one column'],a:1,e:'SUMIFS(sum_range, range1, crit1, range2, crit2, ...) supports several conditions at once.'},
+{c:'Excel',q:'What does IFERROR(formula, "N/A") do?',o:['Deletes errors','Returns "N/A" if the formula errors, otherwise the formula\u2019s result','Always returns "N/A"','Fixes the formula automatically'],a:1,e:'IFERROR wraps a formula and provides a fallback value instead of showing #N/A or #DIV/0!.'},
+{c:'Excel',q:'A slicer connected to a PivotTable does what?',o:['Sorts columns alphabetically','Lets you filter the PivotTable (and connected charts) with one click','Deletes filtered rows','Changes number formats'],a:1,e:'Slicers give a clickable filter UI, and can control multiple PivotTables/charts at once.'},
+{c:'Python',q:'What does [1,2,3,4][1:3] return?',o:['[1, 2, 3]','[2, 3]','[2, 3, 4]','[1, 2]'],a:1,e:'Slicing includes the start index and excludes the end index, so indexes 1 and 2 give [2, 3].'},
+{c:'Python',q:'Which of these is mutable?',o:['tuple','str','list','int'],a:2,e:'Lists can be changed in place. Tuples, strings and ints cannot.'},
+{c:'Python',q:'What is len({1, 2, 2, 3})?',o:['4','3','2','Error'],a:1,e:'A set stores unique values only, so the duplicate 2 collapses.'},
+{c:'Python',q:'Best way to safely open a file?',o:['f = open(p); f.read()','with open(p) as f:','import file(p)','read(p)'],a:1,e:'The with statement closes the file automatically, even if an error occurs.'},
+{c:'Pandas',q:'How do you keep rows where sales is over 100?',o:['df.filter(sales > 100)','df[df["sales"] > 100]','df.where("sales > 100")','df.sales > 100'],a:1,e:'A boolean mask inside brackets selects matching rows.'},
+{c:'Pandas',q:'loc vs iloc: what is the difference?',o:['loc is faster','loc uses labels, iloc uses integer positions','iloc is for columns only','No difference'],a:1,e:'loc selects by label, iloc by integer position.'},
+{c:'Pandas',q:'What does df.groupby("region")["sales"].sum() return?',o:['A DataFrame of all columns','A Series indexed by region','A single number','A list'],a:1,e:'Selecting one column after groupby and aggregating returns a Series with the group keys as index.'},
+{c:'Pandas',q:'Which call flags duplicate rows?',o:['df.duplicated()','df.unique()','df.dupes()','df.isdup()'],a:0,e:'duplicated() returns a boolean Series. drop_duplicates() removes them.'},
+{c:'Pandas',q:'Which merge keeps every row from the left table?',o:['how="inner"','how="left"','how="cross"','how="drop"'],a:1,e:'A left merge keeps all left rows and fills NaN where the right side has no match.'},
+{c:'SQL',q:'Which clause filters groups after aggregation?',o:['WHERE','HAVING','ORDER BY','LIMIT'],a:1,e:'WHERE filters rows before grouping. HAVING filters groups after.'},
+{c:'SQL',q:'A LEFT JOIN returns:',o:['Only matching rows','All left rows plus matches from the right','All rows from both tables','Only unmatched rows'],a:1,e:'Unmatched left rows still appear, with NULLs for right-side columns.'},
+{c:'SQL',q:'Which clause is evaluated first, logically?',o:['SELECT','WHERE','GROUP BY','ORDER BY'],a:1,e:'Logical order: FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY. Of these options, WHERE comes first.'},
+{c:'SQL',q:'What does COUNT(column) do with NULLs?',o:['Counts them','Ignores them','Errors','Turns them into 0'],a:1,e:'COUNT(column) counts non-NULL values. COUNT(*) counts all rows.'},
+{c:'SQL',q:'Best tool for "top 3 products per category"?',o:['GROUP BY only','ROW_NUMBER() OVER (PARTITION BY category ...)','DISTINCT','UNION'],a:1,e:'Window functions rank rows inside each partition. Filter rank <= 3 in an outer query or CTE.'},
+{c:'SQL',q:'What is a CTE?',o:['A stored table on disk','A named temporary result defined with WITH','A type of index','A join type'],a:1,e:'WITH name AS (...) makes queries easier to read and reuse.'},
+{c:'Power BI',q:'What is the difference between a calculated column and a measure?',o:['No difference','A column is computed row by row and stored; a measure is computed on the fly based on filter context','Measures are always slower','Columns can\u2019t use DAX'],a:1,e:'Calculated columns add stored values per row. Measures recalculate dynamically as filters/slicers change.'},
+{c:'Power BI',q:'What does CALCULATE do in DAX?',o:['Sums a column','Evaluates an expression in a modified filter context','Deletes filters permanently','Creates a relationship'],a:1,e:'CALCULATE is the core DAX function for changing filter context, e.g. CALCULATE(SUM(Sales), Region="West").'},
+{c:'Power BI',q:'In a star schema, what does a fact table typically hold?',o:['Descriptive attributes like product name','Transactional/measurable data like sales amount, with keys to dimensions','Only dates','Nothing, it\u2019s just for relationships'],a:1,e:'Fact tables hold measurable events (sales, orders); dimension tables hold descriptive attributes (product, date, region).'},
+{c:'Power BI',q:'Which DAX function gives year-to-date totals?',o:['SUM','TOTALYTD','FILTER','RELATED'],a:1,e:'TOTALYTD(expression, dates) accumulates a measure from the start of the year to the current filter date.'},
+{c:'Power BI',q:'What does a slicer do?',o:['Formats numbers','Provides a visual filter control that affects other visuals on the page','Sorts a table permanently','Creates a new table'],a:1,e:'Slicers let viewers filter the report interactively without editing the underlying model.'},
+{c:'Power BI',q:'What connects two tables in the data model?',o:['A measure','A relationship, based on a shared key column','A slicer','A bookmark'],a:1,e:'Relationships (usually one-to-many) let filters flow between fact and dimension tables.'},
+{c:'Stats',q:'When is the median better than the mean?',o:['Data is symmetric','Data is skewed or has outliers','Data is categorical','Never'],a:1,e:'The median is resistant to extreme values, e.g. income data.'},
+{c:'Stats',q:'p = 0.03 with alpha = 0.05. What do you do?',o:['Fail to reject the null','Reject the null','Increase sample size only','Nothing can be said'],a:1,e:'p is below alpha, so the result is statistically significant. Still check effect size and practical relevance.'},
+{c:'Stats',q:'Ice cream sales and drownings are strongly correlated. Why?',o:['Ice cream causes drowning','A confounder: hot weather','Random noise only','Measurement error'],a:1,e:'Summer heat drives both. Correlation does not imply causation.'},
+{c:'Business',q:'Churn rate is:',o:['New customers / total customers','Customers lost in a period / customers at start of period','Revenue lost / revenue','Cancellations / support tickets'],a:1,e:'Define the period and the starting base clearly before reporting churn.'},
+{c:'Business',q:'A stakeholder asks "why did sales drop?". Your first move?',o:['Build a model','Clarify the metric, time frame and comparison, then segment the drop','Send raw data','Ask them to wait'],a:1,e:'Clarify definitions, then break down by product, region, channel and time to locate the drop.'}
+];
+
+/* ---------------- coding exercises ---------------- */
+const EXERCISES=[
+{c:'Python',t:'Clean prices',p:'Write clean_price(s) that turns "$1,299.50" into 1299.5 and returns None for empty or invalid strings.',s:`def clean_price(s):
+    try:
+        return float(str(s).replace("$", "").replace(",", "").strip())
+    except ValueError:
+        return None
+
+print(clean_price("$1,299.50"))  # 1299.5
+print(clean_price("N/A"))        # None`},
+{c:'Pandas',t:'Top categories by margin',p:'Given df with category, sales, profit: return the 3 categories with the highest profit margin (profit / sales).',s:`g = df.groupby("category").agg(sales=("sales", "sum"), profit=("profit", "sum"))
+g["margin"] = g["profit"] / g["sales"]
+print(g.sort_values("margin", ascending=False).head(3))`},
+{c:'Pandas',t:'Month-over-month growth',p:'Given order_date and revenue columns, compute monthly revenue and MoM % growth.',s:`df["order_date"] = pd.to_datetime(df["order_date"])
+m = df.set_index("order_date")["revenue"].resample("MS").sum()
+growth = m.pct_change() * 100
+print(pd.DataFrame({"revenue": m, "mom_pct": growth.round(1)}))`},
+{c:'SQL',t:'Customers above average spend',p:'From orders(customer_id, amount): list customers whose total spend exceeds the average customer total.',s:`WITH totals AS (
+  SELECT customer_id, SUM(amount) AS total
+  FROM orders
+  GROUP BY customer_id
+)
+SELECT customer_id, total
+FROM totals
+WHERE total > (SELECT AVG(total) FROM totals)
+ORDER BY total DESC;`},
+{c:'SQL',t:'Running total by month',p:'From orders(order_date, amount): show monthly revenue and the cumulative revenue.',s:`WITH monthly AS (
+  SELECT strftime('%Y-%m', order_date) AS month, SUM(amount) AS revenue
+  FROM orders
+  GROUP BY month
+)
+SELECT month, revenue,
+       SUM(revenue) OVER (ORDER BY month) AS running_total
+FROM monthly;`},
+{c:'SQL',t:'Second highest salary',p:'From employees(id, salary): return the second highest distinct salary, or NULL if it does not exist.',s:`SELECT (
+  SELECT DISTINCT salary
+  FROM employees
+  ORDER BY salary DESC
+  LIMIT 1 OFFSET 1
+) AS second_highest;`},
+{c:'Excel',t:'Nested IF grading',p:'Write an Excel formula in cell B2 that grades a score in A2: 90+ is "A", 80+ is "B", 70+ is "C", else "F".',s:`=IF(A2>=90,"A",IF(A2>=80,"B",IF(A2>=70,"C","F")))
+
+Cleaner alternative with IFS (Excel 2019+):
+=IFS(A2>=90,"A",A2>=80,"B",A2>=70,"C",TRUE,"F")`},
+{c:'Power BI',t:'Year-over-year growth measure',p:'Write a DAX measure that shows YoY revenue growth %, given a measure [Total Revenue] and a Date table.',s:`YoY Growth % =
+VAR CurrentRev = [Total Revenue]
+VAR PriorRev =
+    CALCULATE([Total Revenue], SAMEPERIODLASTYEAR('Date'[Date]))
+RETURN
+    DIVIDE(CurrentRev - PriorRev, PriorRev)`}
+];
+
+/* ---------------- cheatsheets ---------------- */
+const CHEATS={
+Excel:[
+['XLOOKUP',`=XLOOKUP(A2, ProductID_range, Price_range, "Not found")`],
+['INDEX + MATCH',`=INDEX(Price_range, MATCH(A2, ProductID_range, 0))`],
+['Nested IF',`=IF(A2>=90,"A",IF(A2>=80,"B",IF(A2>=70,"C","F")))`],
+['SUMIFS / COUNTIFS',`=SUMIFS(Sales, Region, "West", Month, "Jan")
+=COUNTIFS(Status, "Open", Owner, "Priya")`],
+['IFERROR wrapper',`=IFERROR(A2/B2, "N/A")`],
+['TEXTJOIN',`=TEXTJOIN(", ", TRUE, A2:A10)   ' TRUE ignores blanks`],
+['Date math',`=EDATE(A2,1)      ' one month later
+=EOMONTH(A2,0)    ' last day of this month
+=TEXT(A2,"mmm-yy")`],
+['PivotTable via GETPIVOTDATA',`=GETPIVOTDATA("Revenue", $A$3, "Region", "West")`]],
+SQL:[
+['Basic shape',`SELECT category, COUNT(*) AS orders, SUM(amount) AS revenue
+FROM orders
+WHERE order_date >= '2025-01-01'
+GROUP BY category
+HAVING SUM(amount) > 10000
+ORDER BY revenue DESC
+LIMIT 10;`],
+['Joins',`SELECT c.name, SUM(o.amount) AS total
+FROM customers c
+LEFT JOIN orders o ON o.customer_id = c.id
+GROUP BY c.name;`],
+['CTE',`WITH monthly AS (
+  SELECT strftime('%Y-%m', order_date) AS m, SUM(amount) AS rev
+  FROM orders GROUP BY m
+)
+SELECT * FROM monthly WHERE rev > 5000;`],
+['Rank within groups',`SELECT * FROM (
+  SELECT category, product, revenue,
+         ROW_NUMBER() OVER (PARTITION BY category ORDER BY revenue DESC) AS rn
+  FROM product_sales
+) WHERE rn <= 3;`],
+['Month over month',`SELECT month, revenue,
+       LAG(revenue) OVER (ORDER BY month) AS prev,
+       ROUND(100.0 * (revenue - LAG(revenue) OVER (ORDER BY month))
+             / LAG(revenue) OVER (ORDER BY month), 1) AS mom_pct
+FROM monthly;`],
+['CASE WHEN',`SELECT CASE WHEN amount >= 500 THEN 'high'
+            WHEN amount >= 100 THEN 'mid'
+            ELSE 'low' END AS band,
+       COUNT(*)
+FROM orders GROUP BY band;`],
+['Find duplicates',`SELECT email, COUNT(*) FROM users
+GROUP BY email HAVING COUNT(*) > 1;`],
+['Customers with no orders',`SELECT c.id FROM customers c
+LEFT JOIN orders o ON o.customer_id = c.id
+WHERE o.id IS NULL;`]],
+Python:[
+['Read a CSV safely',`import csv
+with open("data.csv", newline="", encoding="utf-8") as f:
+    rows = list(csv.DictReader(f))`],
+['Comprehensions',`squares = [x**2 for x in range(10) if x % 2 == 0]
+lookup = {r["id"]: r["name"] for r in rows}`],
+['Try / except',`try:
+    value = float(text)
+except ValueError:
+    value = None`],
+['f-strings',`print(f"{name}: {total:,.2f} ({share:.1%})")`]],
+Pandas:[
+['Load & inspect',`df = pd.read_csv("data.csv")
+df.head(); df.info(); df.describe(include="all")`],
+['Filter rows',`df[(df.region == "West") & (df.sales > 500)]
+df.query("region == 'West' and sales > 500")`],
+['Group & aggregate',`df.groupby("category").agg(
+    revenue=("sales", "sum"),
+    orders=("order_id", "nunique"),
+).sort_values("revenue", ascending=False)`],
+['Missing values',`df.isna().sum()
+df["age"] = df["age"].fillna(df["age"].median())
+df = df.dropna(subset=["customer_id"])`],
+['Duplicates',`df.duplicated().sum()
+df = df.drop_duplicates(subset=["order_id"])`],
+['Dates',`df["date"] = pd.to_datetime(df["date"], errors="coerce")
+df["month"] = df["date"].dt.to_period("M")`],
+['Merge',`pd.merge(orders, customers, on="customer_id", how="left")`],
+['Pivot table',`pd.pivot_table(df, index="month", columns="region",
+               values="sales", aggfunc="sum", fill_value=0)`],
+['Resample time series',`df.set_index("date")["sales"].resample("W").sum().rolling(4).mean()`],
+['Outliers (IQR)',`q1, q3 = df.x.quantile([.25, .75])
+iqr = q3 - q1
+mask = df.x.between(q1 - 1.5*iqr, q3 + 1.5*iqr)
+clean = df[mask]`]],
+'Charts & stats':[
+['Line chart',`import matplotlib.pyplot as plt
+fig, ax = plt.subplots(figsize=(8, 4))
+ax.plot(m.index, m.values)
+ax.set(title="Monthly revenue", xlabel="Month", ylabel="USD")
+plt.tight_layout()`],
+['Correlation heatmap',`import seaborn as sns
+sns.heatmap(df.corr(numeric_only=True), annot=True, cmap="vlag", center=0)`],
+['Two-sample t-test',`from scipy import stats
+t, p = stats.ttest_ind(a, b, equal_var=False)
+print(f"t={t:.2f}, p={p:.4f}")`],
+['Chi-square',`ct = pd.crosstab(df.plan, df.churned)
+chi2, p, dof, exp = stats.chi2_contingency(ct)`]],
+'Power BI (DAX)':[
+['Basic measure',`Total Revenue = SUM(Sales[Amount])
+Order Count = COUNTROWS(Sales)
+Avg Order Value = DIVIDE([Total Revenue], [Order Count])`],
+['CALCULATE with a filter',`West Revenue =
+CALCULATE([Total Revenue], Sales[Region] = "West")`],
+['Year-to-date',`Revenue YTD = TOTALYTD([Total Revenue], 'Date'[Date])`],
+['Year-over-year %',`YoY Growth % =
+VAR Prior = CALCULATE([Total Revenue], SAMEPERIODLASTYEAR('Date'[Date]))
+RETURN DIVIDE([Total Revenue] - Prior, Prior)`],
+['Ignore filters with ALL',`Pct of Total =
+DIVIDE([Total Revenue], CALCULATE([Total Revenue], ALL(Sales)))`],
+['Rank measure',`Product Rank =
+RANKX(ALL(Product[Name]), [Total Revenue])`]]
+};
+
+/* ---------------- interview flashcards ---------------- */
+const CARDS=[
+['Excel','How would you summarise 100,000 rows without writing formulas for every group?','Build a PivotTable: drag the group field to Rows and the metric to Values. Add slicers for interactivity instead of manual filters.'],
+['Excel','VLOOKUP vs INDEX/MATCH vs XLOOKUP — which do you use and why?','XLOOKUP when available: it searches either direction and defaults to exact match. INDEX/MATCH is the reliable classic. VLOOKUP is limited to searching left-to-right and breaks if columns move.'],
+['Excel','How do you make a spreadsheet less error-prone for other users?','Data validation dropdowns instead of free text, IFERROR around risky formulas, locked/protected cells for formulas, and clear labelled headers.'],
+['SQL','What is the difference between WHERE and HAVING?','WHERE filters individual rows before grouping. HAVING filters groups after aggregation. Example: WHERE year = 2025, then HAVING SUM(sales) > 10000.'],
+['SQL','INNER vs LEFT JOIN?','INNER keeps only rows with matches in both tables. LEFT keeps every left row and fills NULLs where the right side has no match. Use LEFT when you must not lose the left-side entities (e.g. customers with zero orders).'],
+['SQL','What are window functions? Give an example.','They compute across a set of related rows without collapsing them. Example: ROW_NUMBER() OVER (PARTITION BY category ORDER BY sales DESC) ranks products within each category.'],
+['SQL','CTE vs subquery?','Both produce intermediate results. CTEs are named, readable and reusable within a query. Prefer them for multi-step logic.'],
+['Python','Explain list vs tuple vs set vs dict.','List: ordered, mutable. Tuple: ordered, immutable. Set: unordered, unique values. Dict: key-value pairs with fast lookup.'],
+['Python','How do you handle missing data in Pandas?','First understand why it is missing. Then drop (if few and random), impute (median for skewed numerics, mode for categories), or flag it with an indicator column. Always document the choice.'],
+['Python','merge vs join vs concat?','merge joins on columns (SQL-style). join joins on the index. concat stacks frames along an axis.'],
+['Power BI','Calculated column vs measure — when do you use each?','Calculated columns are computed once and stored per row; use them for static groupings (e.g. price band). Measures recompute based on filter context; use them for aggregations like Total Revenue that change with slicers.'],
+['Power BI','What is CALCULATE and why is it central to DAX?','CALCULATE evaluates an expression in a modified filter context. Almost every advanced DAX pattern (YTD, % of total, comparisons) is built on top of it.'],
+['Power BI','How would you design a model for a sales dashboard?','A star schema: one fact table (Sales) with keys, linked to dimension tables (Date, Product, Region, Customer). Avoid one giant flat table.'],
+['Stats','Explain a p-value to a non-technical person.','If there were truly no effect, how often would we see results at least this extreme by chance? A small p-value means the data would be surprising under "no effect".'],
+['Stats','What is the difference between correlation and causation?','Correlation means two variables move together. Causation means one produces the change in the other. Confounders, reverse causality or coincidence can create correlation without causation. Experiments (A/B tests) establish causation.'],
+['Business','Sales dropped 15% last month. How do you investigate?','Confirm the metric and data quality. Compare to the same period last year. Segment by product, region, channel, customer type. Check for pricing, stock, marketing or seasonality changes. Report the cause with numbers and a recommendation.'],
+['Business','Which KPIs would you track for an e-commerce business?','Revenue, orders, average order value, conversion rate, repeat purchase rate, customer acquisition cost, lifetime value, churn and gross margin.'],
+['Tools','When would you use Excel, SQL, Python or Power BI?','Excel for quick ad-hoc work on smaller data. SQL for extracting and aggregating from databases. Python for cleaning, statistics and automation at scale. Power BI/Tableau for shareable, interactive dashboards.']
+];
+
+/* ---------------- career kit ---------------- */
+const CAREER={
+'Resume':['One page, with a two-line summary (no "objective")','Three projects with impact bullets: action + number + result','Skills grouped: SQL, Python, BI tools, Excel, Statistics','GitHub and portfolio links at the top','Keywords copied from 5 target job descriptions'],
+'Portfolio':['5\u20136 polished projects beat 15 rushed ones','Every README has: problem, approach, key findings, visuals, tools','Notebooks run top to bottom without errors','Data sources are credited and requirements listed','Top 3 repos pinned on GitHub'],
+'LinkedIn':['Headline: Data Analyst | SQL \u00b7 Python \u00b7 Power BI \u00b7 Excel','About section that names your 3 best projects and results','Featured section links to project repos or dashboards','One short post per project','Message 10 analysts or recruiters each week'],
+'Job search':['List of 50 target companies','5\u201310 tailored applications per day','30 minutes of SQL practice daily (DataLemur, StrataScratch)','Two mock interviews with a friend or Claude','Three STAR stories prepared','Application tracker spreadsheet']
+};
+const README=`# Project title: one line on the business question
+
+## Problem
+Who asked, what decision does it support?
+
+## Data
+Source, size (rows x columns), time range, licence.
+
+## Approach
+1. Cleaning: key decisions and why
+2. Analysis: methods (SQL, Pandas, DAX, Excel formulas)
+3. Visualisation: tools used
+
+## Key findings
+- Finding 1 with a number
+- Finding 2 with a number
+- Finding 3 with a number
+
+## Recommendations
+What should the business do, and what is the expected impact?
+
+## Tools
+Excel, SQL (SQLite), Python (Pandas, Seaborn), Power BI`;
+const LINKS=[
+['Google Colab','Free Python notebooks in your browser','https://colab.research.google.com'],
+['Kaggle Learn','Short free courses: Python, Pandas, SQL, Viz','https://www.kaggle.com/learn'],
+['Kaggle Datasets','Thousands of practice datasets','https://www.kaggle.com/datasets'],
+['SQLBolt','Interactive SQL lessons','https://sqlbolt.com'],
+['Mode SQL Tutorial','Basic to advanced SQL','https://mode.com/sql-tutorial'],
+['DataLemur','SQL interview practice','https://datalemur.com'],
+['Microsoft Power BI Learn','Free official Power BI modules','https://learn.microsoft.com/power-bi'],
+['ExcelJet','Excel formula reference and examples','https://exceljet.net'],
+['Pandas documentation','Official user guide','https://pandas.pydata.org/docs/'],
+['UCI ML Repository','Classic clean datasets','https://archive.ics.uci.edu']
+];
+const KEYWORDS=['Excel','SQL','Python','Power BI','Tableau','Pandas','NumPy','PivotTable','VLOOKUP','XLOOKUP','JOIN','GROUP BY','window function','CTE','DAX','data visualization','data cleaning','A/B testing','statistics','dashboard','KPI','ETL','data modeling','regression','churn','segmentation','Google Sheets','data storytelling','stakeholder','reporting','forecasting','Jupyter','GitHub','matplotlib','seaborn'];
+
+/* ================= components ================= */
+function Code({text}){
+  const ref=useRef(null);
+  return (
+    <div className="cb">
+      <button className="cp" ref={ref} onClick={()=>copyText(text,ref.current)}>Copy</button>
+      <pre><code>{text}</code></pre>
+    </div>
+  );
+}
+
+function ToolChip({tool}){
+  const c=(TOOLS[tool]||{color:'var(--muted)'}).color;
+  return <span className="tchip" style={{background:c}}>{tool}</span>;
+}
+
+function NotesField({value,onChange,placeholder}){
+  return (
+    <div className="notes">
+      <label>Your notes</label>
+      <textarea value={value||''} onChange={e=>onChange(e.target.value)} placeholder={placeholder||'What did you actually do, or get stuck on?'}/>
+    </div>
+  );
+}
+
+function Header({view,setView,pct,theme,setTheme}){
+  const NAV=[['home','Start'],['roadmap','Roadmap'],['sql','SQL Sandbox'],['projects','Projects'],['practice','Practice'],['cheats','Cheatsheets'],['interview','Interview prep'],['career','Career kit']];
+  return (
+    <header className="top">
+      <div className="wrap">
+        <div className="bar">
+          <button className="brand" onClick={()=>setView('home')}><i></i>AnalystPath</button>
+          <div className="prog"><span>{pct}%</span><div className="meter"><b style={{width:pct+'%'}}></b></div></div>
+          <button className="icon-btn" aria-label="Toggle theme" onClick={()=>setTheme(theme==='dark'?'light':'dark')}>◐</button>
+        </div>
+        <nav className="tabs">
+          {NAV.map(n=>(
+            <button key={n[0]} aria-current={view===n[0]?'page':undefined} onClick={()=>setView(n[0])}>{n[1]}</button>
+          ))}
+        </nav>
+      </div>
+    </header>
+  );
+}
+
+/* ---- streak & today helpers ---- */
+function computeStreak(activity){
+  let n=0,d=new Date();
+  const key=dt=>dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0');
+  if(!activity[key(d)]){ d.setDate(d.getDate()-1); if(!activity[key(d)]) return 0; }
+  while(activity[key(d)]){ n++; d.setDate(d.getDate()-1); }
+  return n;
+}
+
+/* ---- home ---- */
+const DEMO=[['Laptop','West',12,900],['Phone','East',30,500],['Tablet','West',18,320],['Monitor','North',25,210],['Laptop','East',9,900],['Phone','North',22,500],['Tablet','South',14,320],['Monitor','West',20,210]].map(r=>({product:r[0],region:r[1],units:r[2],price:r[3],revenue:r[2]*r[3]}));
+const ALLC=['product','region','units','price','revenue'];
+const OPS={
+  raw:{label:'Raw data',code:'df',run:()=>({cols:ALLC,rows:DEMO,hi:null})},
+  filter:{label:'Filter rows',code:'df[df["region"] == "West"]',run:()=>({cols:ALLC,rows:DEMO.filter(r=>r.region==='West'),hi:'region'})},
+  group:{label:'Group and sum',code:'df.groupby("region")["revenue"].sum()',run:()=>{const m={};DEMO.forEach(r=>m[r.region]=(m[r.region]||0)+r.revenue);return{cols:['region','revenue'],rows:Object.keys(m).sort().map(k=>({region:k,revenue:m[k]})),hi:'revenue'}}},
+  top:{label:'Top 3 sales',code:'df.sort_values("revenue", ascending=False).head(3)',run:()=>({cols:ALLC,rows:[...DEMO].sort((a,b)=>b.revenue-a.revenue).slice(0,3),hi:'revenue'})}
+};
+function LiveDemo(){
+  const [op,setOp]=useState('raw');
+  const o=OPS[op],r=o.run();
+  const isNum=c=>['units','price','revenue'].includes(c);
+  return (
+    <div className="demo card" style={{padding:0}}>
+      <div className="demo-h" style={{display:'flex',flexWrap:'wrap',gap:6,padding:10,borderBottom:'1px solid var(--line)',background:'var(--soft)'}}>
+        {Object.keys(OPS).map(k=>(
+          <button key={k} aria-pressed={k===op} onClick={()=>setOp(k)} style={{border:'1px solid var(--line)',background:'var(--surface)',padding:'5px 11px',borderRadius:7,fontSize:'.88rem',fontWeight:500}}>{OPS[k].label}</button>
+        ))}
+      </div>
+      <pre style={{borderRadius:0,margin:0}}><code>{o.code}</code></pre>
+      <div style={{overflowX:'auto'}}>
+        <table style={{borderCollapse:'collapse',width:'100%',fontSize:'.9rem'}}>
+          <thead><tr>{r.cols.map(c=>(
+            <th key={c} style={{padding:'7px 12px',textAlign:isNum(c)?'right':'left',borderBottom:'1px solid var(--line)',color:'var(--muted)',fontSize:'.82rem',background:c===r.hi?'color-mix(in srgb, var(--hi) 42%, transparent)':'var(--bg)'}}>{c}</th>
+          ))}</tr></thead>
+          <tbody>{r.rows.map((x,i)=>(
+            <tr key={i}>{r.cols.map(c=>(
+              <td key={c} style={{padding:'7px 12px',textAlign:isNum(c)?'right':'left',borderBottom:'1px solid var(--line)',whiteSpace:'nowrap',background:c===r.hi?'color-mix(in srgb, var(--hi) 42%, transparent)':'transparent'}}>{isNum(c)?x[c].toLocaleString():x[c]}</td>
+            ))}</tr>
+          ))}</tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+function Home({setView,pct,nextDay,progress,setProgress}){
+  const streak=computeStreak(progress.activity);
+  const expectedDay=(()=>{
+    if(!progress.startDate) return null;
+    const n=daysBetween(progress.startDate,todayStr())+1;
+    return Math.max(1,Math.min(n,TOTAL_DAYS));
+  })();
+  const fileRef=useRef(null);
+  function exportProgress(){
+    const blob=new Blob([JSON.stringify(progress,null,2)],{type:'application/json'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='analystpath-progress.json';
+    document.body.appendChild(a);a.click();a.remove();
+    toast('Progress exported');
+  }
+  function importProgress(e){
+    const f=e.target.files[0];if(!f)return;
+    const reader=new FileReader();
+    reader.onload=()=>{
+      try{
+        const data=JSON.parse(reader.result);
+        setProgress(p=>({...p,...data}));
+        toast('Progress imported');
+      }catch(err){toast('That file could not be read')}
+    };
+    reader.readAsText(f);
+    e.target.value='';
+  }
+  return (
+    <div>
+      <section className="hero">
+        <div className="hero-grid">
+          <h1>Four tools, one job-ready path.</h1>
+          <p className="lead">Excel, SQL, Power BI and Python — a {TOTAL_DAYS}-day roadmap built entirely in React, with a real SQL sandbox, projects, practice and an interview kit.</p>
+          <div className="cta">
+            <button className="btn" onClick={()=>setView('roadmap')}>{pct?`Continue \u2014 Day ${nextDay||1}`:'Start Day 1'}</button>
+            <button className="btn alt" onClick={()=>setView('projects')}>See the 9 projects</button>
+          </div>
+          <div className="streakbar">
+            {streak>0 && <span className="streak">\ud83d\udd25 {streak}-day streak</span>}
+            {!progress.startDate ? (
+              <button className="btn alt sm" onClick={()=>setProgress(p=>({...p,startDate:todayStr()}))}>Set today as my start date</button>
+            ) : (
+              <span className="small muted">Started {progress.startDate} \u2014 based on that, you should be around <strong>Day {expectedDay}</strong>.</span>
+            )}
+          </div>
+          {pct>0 && <p className="small muted" style={{margin:'10px 0 0'}}>{pct}% complete overall. Progress is saved in this browser.</p>}
+          <div className="cta" style={{marginTop:10}}>
+            <button className="btn alt sm" onClick={exportProgress}>Export progress (.json)</button>
+            <button className="btn alt sm" onClick={()=>fileRef.current.click()}>Import progress</button>
+            <input type="file" accept="application/json" ref={fileRef} style={{display:'none'}} onChange={importProgress}/>
+          </div>
+          <div className="toolgrid">
+            {Object.entries(TOOLS).map(([name,t])=>(
+              <div className="toolcard" key={name}>
+                <b><span className="dot" style={{background:t.color}}></span>{name}</b>
+                <span>{t.blurb}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <p className="small muted" style={{margin:'0 0 10px'}}>Try it: a real Pandas operation on a small sales table.</p>
+      <LiveDemo/>
+      <div className="two" style={{marginTop:34}}>
+        <div>
+          <h2>What is inside</h2>
+          <div className="list-table">
+            {[['roadmap','Roadmap',`${TOTAL_DAYS} days across Excel, SQL, Python and Power BI, with daily tasks and notes.`],
+              ['sql','SQL Sandbox','A real, runnable SQLite database in your browser \u2014 write and execute queries.'],
+              ['projects','Projects','9 portfolio projects with step checklists and interview talking points.'],
+              ['practice','Practice','32 quiz questions (with a "missed only" mode) and 8 coding exercises.'],
+              ['cheats','Cheatsheets','Copy-ready Excel, SQL, Python, Pandas and DAX snippets.'],
+              ['interview','Interview prep','18 flashcards for the questions that come up most.'],
+              ['career','Career kit','Resume bullets, a JD keyword matcher, an application tracker and checklists.']
+            ].map(r=>(
+              <button className="lt-row" key={r[0]} onClick={()=>setView(r[0])}><strong>{r[1]}</strong><span>{r[2]}</span></button>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h2>Skills employers screen for</h2>
+          <div className="card">
+            <p className="muted small">Entry-level analyst job posts repeat the same requirements. This site covers all of them.</p>
+            {['Excel (formulas, PivotTables)','SQL (joins, aggregation, window functions)','Python and Pandas','Power BI or Tableau','Statistics and A/B testing','Data storytelling','Git and GitHub'].map(x=><span className="chip" key={x}>{x}</span>)}
+            <p className="small" style={{margin:'10px 0 0'}}><strong>Rule of thumb:</strong> spend 30% of your time learning and 70% building.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ---- roadmap ---- */
+function Roadmap({progress,toggle,setNote}){
+  const [track,setTrack]=useState('All');
+  return (
+    <div>
+      <div className="sec-head"><h2>{TOTAL_DAYS}-day roadmap</h2><p>Excel first, then SQL, then Python, then Power BI. Tick a day once you finish its task, jot notes, or filter to just one tool to focus.</p></div>
+      <div className="filters">
+        {['All',...Object.keys(TOOLS)].map(t=>(
+          <button key={t} className="pill" aria-pressed={t===track} onClick={()=>setTrack(t)}>
+            {t!=='All' && <span className="dot" style={{background:TOOLS[t].color}}></span>}
+            {t}
+          </button>
+        ))}
+      </div>
+      {Object.keys(TOOLS).map(t=>{
+        if(track!=='All' && track!==t) return null;
+        const days=MASTER.filter(d=>d.tool===t);
+        const dn=days.filter(d=>progress.days[d.day]).length;
+        return (
+          <div key={t}>
+            <div className="week-h">
+              <h3><span style={{background:TOOLS[t].color,display:'inline-block',width:9,height:9,borderRadius:'50%',marginRight:8}}></span>{t}</h3>
+              <span className="small muted">{dn}/{days.length} days</span>
+              <div className="meter"><b style={{width:(100*dn/days.length)+'%'}}></b></div>
+            </div>
+            {days.map(d=>(
+              <DayRow key={d.day} d={d} done={!!progress.days[d.day]} onToggle={()=>toggle('days',d.day)} note={progress.notes['day-'+d.day]} onNote={v=>setNote('day-'+d.day,v)}/>
+            ))}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+function DayRow({d,done,onToggle,note,onNote}){
+  const [open,setOpen]=useState(false);
+  return (
+    <details className={"row"+(done?" done":"")} open={open} onToggle={e=>setOpen(e.target.open)}>
+      <summary>
+        <input type="checkbox" checked={done} onChange={e=>{e.stopPropagation();onToggle()}} onClick={e=>e.stopPropagation()} aria-label={`Mark ${d.tool} day ${d.trackDay} done`}/>
+        <span className="dn">Day {d.trackDay}</span>
+        <span className="ttl">{d.title}</span>
+        <ToolChip tool={d.tool}/>
+      </summary>
+      <div className="body">
+        <h4>Learn</h4>
+        <ul>{d.topics.map((x,i)=><li key={i}>{x}</li>)}</ul>
+        <h4>Practice task</h4>
+        <p style={{margin:0}}>{d.task}</p>
+        <h4>Notes</h4>
+        <NotesField value={note} onChange={onNote}/>
+      </div>
+    </details>
+  );
+}
+
+/* ---- SQL sandbox ---- */
+const SEED_SQL=`
+CREATE TABLE customers (id INTEGER PRIMARY KEY, name TEXT, city TEXT, segment TEXT);
+CREATE TABLE orders (id INTEGER PRIMARY KEY, customer_id INTEGER, order_date TEXT, amount REAL, category TEXT);
+
+INSERT INTO customers VALUES
+ (1,'Ava Chen','Austin','Consumer'),
+ (2,'Marcus Reed','Chicago','Corporate'),
+ (3,'Priya Nair','Seattle','Consumer'),
+ (4,'Liam O''Connor','Boston','Home Office'),
+ (5,'Sofia Ruiz','Denver','Corporate'),
+ (6,'Noah Kim','Austin','Consumer'),
+ (7,'Elena Petrova','Miami','Corporate'),
+ (8,'James Walsh','Denver','Home Office');
+
+INSERT INTO orders VALUES
+ (1,1,'2026-01-14',129.50,'Furniture'),
+ (2,1,'2026-02-02,',89.00,'Office Supplies'),
+ (3,2,'2026-01-20',540.00,'Technology'),
+ (4,2,'2026-03-11',210.00,'Technology'),
+ (5,3,'2026-01-29',65.20,'Office Supplies'),
+ (6,3,'2026-02-18',430.00,'Furniture'),
+ (7,4,'2026-02-05',75.00,'Office Supplies'),
+ (8,5,'2026-01-09',980.00,'Technology'),
+ (9,5,'2026-03-02',150.00,'Furniture'),
+ (10,6,'2026-02-22',45.90,'Office Supplies'),
+ (11,7,'2026-01-17',610.00,'Technology'),
+ (12,7,'2026-03-19',320.00,'Furniture'),
+ (13,8,'2026-02-27',210.00,'Office Supplies'),
+ (14,3,'2026-03-08',95.00,'Furniture'),
+ (15,1,'2026-03-22',310.00,'Technology');
+`.replace("2026-02-02,'","2026-02-02'");
+
+const SAMPLE_QUERIES=[
+['Preview a table','SELECT * FROM customers;'],
+['Revenue by category','SELECT category, ROUND(SUM(amount),2) AS revenue, COUNT(*) AS orders\nFROM orders\nGROUP BY category\nORDER BY revenue DESC;'],
+['Join customers + orders','SELECT c.name, c.city, SUM(o.amount) AS total_spend\nFROM customers c\nJOIN orders o ON o.customer_id = c.id\nGROUP BY c.name, c.city\nORDER BY total_spend DESC;'],
+['Rank customers within segment','SELECT c.segment, c.name, SUM(o.amount) AS spend,\n  RANK() OVER (PARTITION BY c.segment ORDER BY SUM(o.amount) DESC) AS rnk\nFROM customers c JOIN orders o ON o.customer_id = c.id\nGROUP BY c.segment, c.name;'],
+['Customers with no orders','SELECT c.name FROM customers c\nLEFT JOIN orders o ON o.customer_id = c.id\nWHERE o.id IS NULL;'],
+['Above-average spenders (CTE)','WITH totals AS (\n  SELECT customer_id, SUM(amount) AS total FROM orders GROUP BY customer_id\n)\nSELECT customer_id, total FROM totals\nWHERE total > (SELECT AVG(total) FROM totals)\nORDER BY total DESC;']
+];
+function SqlSandbox(){
+  const [status,setStatus]=useState('loading');
+  const [sqlObj,setSqlObj]=useState(null);
+  const [query,setQuery]=useState(SAMPLE_QUERIES[1][1]);
+  const [result,setResult]=useState(null);
+  const [error,setError]=useState('');
+
+  function freshDb(SQL){
+    const db=new SQL.Database();
+    db.run(SEED_SQL);
+    return db;
+  }
+
+  useEffect(()=>{
+    let cancelled=false;
+    if(typeof initSqlJs==='undefined'){ setStatus('error'); return; }
+    initSqlJs({locateFile:f=>`https://cdn.jsdelivr.net/npm/sql.js@1.10.3/dist/${f}`})
+      .then(SQL=>{
+        if(cancelled) return;
+        const db=freshDb(SQL);
+        setSqlObj({SQL,db});
+        setStatus('ready');
+      })
+      .catch(()=>{ if(!cancelled) setStatus('error'); });
+    return ()=>{cancelled=true};
+  },[]);
+
+  function run(){
+    if(!sqlObj) return;
+    setError('');
+    try{
+      const res=sqlObj.db.exec(query);
+      if(res.length===0){ setResult({columns:[],values:[]}); toast('Query ran \u2014 no rows returned'); }
+      else setResult(res[res.length-1]);
+    }catch(e){
+      setError(e.message||String(e));
+      setResult(null);
+    }
+  }
+  function resetDb(){
+    if(!sqlObj) return;
+    try{
+      sqlObj.db.close();
+    }catch(e){}
+    const db=freshDb(sqlObj.SQL);
+    setSqlObj({...sqlObj,db});
+    setResult(null);setError('');
+    toast('Database reset');
+  }
+
+  return (
+    <div>
+      <div className="sec-head"><h2>SQL Sandbox</h2><p>A real SQLite database, running entirely in your browser (via sql.js / WebAssembly). Two tables are preloaded: <code>customers</code> and <code>orders</code>. Write a query and run it.</p></div>
+      {status==='loading' && <div className="card">Loading the in-browser database engine\u2026</div>}
+      {status==='error' && <div className="card">Couldn\u2019t load the SQL engine (this needs internet access to a CDN). Use the SQL cheatsheet and the coding exercises instead.</div>}
+      {status==='ready' && (
+        <div className="sandbox">
+          <div className="filters">
+            {SAMPLE_QUERIES.map(([label,q])=>(
+              <button key={label} className="pill" onClick={()=>setQuery(q)}>{label}</button>
+            ))}
+          </div>
+          <textarea value={query} onChange={e=>setQuery(e.target.value)} spellCheck="false"/>
+          <div className="cta" style={{marginTop:10}}>
+            <button className="btn" onClick={run}>Run query</button>
+            <button className="btn alt" onClick={resetDb}>Reset database</button>
+          </div>
+          {error && <div className="err">{error}</div>}
+          {result && (
+            result.columns.length===0 ? <p className="muted small" style={{marginTop:10}}>No rows returned.</p> : (
+              <div className="resultwrap">
+                <table>
+                  <thead><tr>{result.columns.map(c=><th key={c}>{c}</th>)}</tr></thead>
+                  <tbody>{result.values.map((row,i)=>(
+                    <tr key={i}>{row.map((v,j)=><td key={j}>{v===null?'NULL':String(v)}</td>)}</tr>
+                  ))}</tbody>
+                </table>
+              </div>
+            )
+          )}
+          <div className="card" style={{marginTop:16}}>
+            <h3>Schema</h3>
+            <Code text={`customers(id, name, city, segment)
+orders(id, customer_id, order_date, amount, category)`}/>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ---- projects ---- */
+function ProjectRow({p,progress,toggle,onNote}){
+  const [open,setOpen]=useState(false);
+  const done=p.steps.filter((_,i)=>progress.steps[p.id+'-'+i]).length;
+  return (
+    <details className={"row"+(done===p.steps.length?" done":"")} open={open} onToggle={e=>setOpen(e.target.open)}>
+      <summary>
+        <span className="ttl">{p.name}</span>
+        <ToolChip tool={p.tool}/>
+        <span className="small muted" style={{marginLeft:'auto',paddingRight:6}}>{done}/{p.steps.length}</span>
+      </summary>
+      <div className="body">
+        <p className="muted" style={{margin:'12px 0 6px'}}><strong>Data:</strong> {p.data}</p>
+        <div>{p.skills.map(s=><span className="chip" key={s}>{s}</span>)}</div>
+        <h4>Steps</h4>
+        {p.steps.map((s,i)=>{
+          const k=p.id+'-'+i, on=!!progress.steps[k];
+          return (
+            <label className={"ck"+(on?" on":"")} key={i}>
+              <input type="checkbox" checked={on} onChange={()=>toggle('steps',k)}/>
+              <span>{s}</span>
+            </label>
+          );
+        })}
+        <h4>Deliverable</h4><p style={{margin:0}}>{p.deliver}</p>
+        <h4>Say this in the interview</h4><p style={{margin:0}} className="muted">{p.talk}</p>
+        <h4>Notes</h4>
+        <NotesField value={progress.notes['proj-'+p.id]} onChange={v=>onNote('proj-'+p.id,v)}/>
+      </div>
+    </details>
+  );
+}
+function Projects({progress,toggle,setNote}){
+  let lastTier=null;
+  return (
+    <div>
+      <div className="sec-head"><h2>9 job-ready projects</h2><p>Every project starts with a business question and ends with a recommendation that includes numbers. Together they cover Excel, SQL, Python and Power BI.</p></div>
+      {PROJECTS.map((p)=>{
+        const showTier=p.tier!==lastTier; lastTier=p.tier;
+        return (
+          <React.Fragment key={p.id}>
+            {showTier && <h3 style={{margin:'22px 0 10px'}}>{p.tier}</h3>}
+            <ProjectRow p={p} progress={progress} toggle={toggle} onNote={setNote}/>
+          </React.Fragment>
+        );
+      })}
+      <div className="card" style={{marginTop:22}}>
+        <h3>What makes a project job-ready</h3>
+        <ul style={{margin:'8px 0 0',paddingLeft:'1.1rem'}}>
+          <li>It starts with a business question, not "I explored this dataset".</li>
+          <li>It ends with quantified recommendations.</li>
+          <li>The README explains the problem, approach, findings and visuals.</li>
+          <li>The set includes Excel, SQL, Python and Power BI.</li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+/* ---- practice ---- */
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function Quiz({progress,setProgress}){
+  const [cat,setCat]=useState('All');
+  const [missedOnly,setMissedOnly]=useState(false);
+  const [session,setSession]=useState(null);
+  const cats=['All',...new Set(QUIZ.map(q=>q.c))];
+  const withIdx=QUIZ.map((q,i)=>({...q,idx:i}));
+  const missedCount=withIdx.filter(q=>progress.quizWrong[q.idx]>0).length;
+
+  function pool(){
+    let base=cat==='All'?withIdx:withIdx.filter(q=>q.c===cat);
+    if(missedOnly) base=base.filter(q=>progress.quizWrong[q.idx]>0);
+    return base;
+  }
+  if(!session){
+    const best=progress.best[(missedOnly?'missed-':'')+cat];
+    const count=pool().length;
+    return (
+      <div className="qbox">
+        <div className="filters">{cats.map(c=><button key={c} className="pill" aria-pressed={c===cat} onClick={()=>setCat(c)}>{c}</button>)}</div>
+        <div className="filters">
+          <button className="pill" aria-pressed={!missedOnly} onClick={()=>setMissedOnly(false)}>All questions</button>
+          <button className="pill" aria-pressed={missedOnly} onClick={()=>setMissedOnly(true)}>Missed questions only ({missedCount})</button>
+        </div>
+        <div className="card">
+          <p style={{margin:'0 0 12px'}}>{count} question{count===1?'':'s'}{best!=null?` \u00b7 Best score: ${best}%`:''}</p>
+          {count===0 ? <p className="muted small">No missed questions here yet \u2014 nice.</p> : (
+            <button className="btn" onClick={()=>setSession({list:shuffle(pool()),i:0,score:0,sel:null})}>Start quiz</button>
+          )}
+        </div>
+      </div>
+    );
+  }
+  if(session.i>=session.list.length){
+    const pct=Math.round(100*session.score/session.list.length);
+    const msg=pct>=80?'Strong. Move on to the projects.':pct>=50?'Solid start. Review the explanations you missed.':'Revisit the roadmap for this topic, then retry.';
+    const key=(missedOnly?'missed-':'')+cat;
+    return (
+      <div className="qbox card">
+        <p className="muted" style={{margin:0}}>Your score</p>
+        <div className="big">{session.score}/{session.list.length}</div>
+        <p style={{margin:'10px 0 16px'}}>{msg}</p>
+        <button className="btn" onClick={()=>{
+          if(progress.best[key]==null||pct>progress.best[key]) setProgress(p=>({...p,best:{...p.best,[key]:pct}}));
+          setSession({list:shuffle(pool()),i:0,score:0,sel:null});
+        }}>Try again</button>{' '}
+        <button className="btn alt" onClick={()=>{
+          if(progress.best[key]==null||pct>progress.best[key]) setProgress(p=>({...p,best:{...p.best,[key]:pct}}));
+          setSession(null);
+        }}>Change topic</button>
+      </div>
+    );
+  }
+  const q=session.list[session.i];
+  return (
+    <div className="qbox card">
+      <div className="qmeta"><span>{q.c}</span><span>Question {session.i+1} of {session.list.length}</span></div>
+      <h3 style={{marginBottom:14,fontSize:'1.15rem'}}>{q.q}</h3>
+      {q.o.map((o,i)=>{
+        let cls='';
+        if(session.sel!=null){ if(i===q.a) cls='ok'; else if(i===session.sel) cls='bad'; }
+        return (
+          <button key={i} className={"opt "+cls} disabled={session.sel!=null} onClick={()=>{
+            const sel=i, correct=i===q.a, sc=session.score+(correct?1:0);
+            if(!correct){
+              setProgress(p=>({...p,quizWrong:{...p.quizWrong,[q.idx]:(p.quizWrong[q.idx]||0)+1}}));
+            } else if(progress.quizWrong[q.idx]){
+              setProgress(p=>{const qw={...p.quizWrong};delete qw[q.idx];return {...p,quizWrong:qw}});
+            }
+            setSession({...session,sel,score:sc});
+          }}>{o}</button>
+        );
+      })}
+      {session.sel!=null && (
+        <>
+          <div className="expl"><strong>{session.sel===q.a?'Correct.':'Not quite.'}</strong> {q.e}</div>
+          <button className="btn" onClick={()=>setSession({...session,i:session.i+1,sel:null})}>{session.i+1<session.list.length?'Next question':'See score'}</button>
+        </>
+      )}
+    </div>
+  );
+}
+function Exercises(){
+  return (
+    <div>
+      {EXERCISES.map((e,i)=>(
+        <details className="row" key={i}>
+          <summary><span className="dn">{e.c}</span><span className="ttl">{e.t}</span></summary>
+          <div className="body">
+            <p style={{margin:'12px 0 4px'}}>{e.p}</p>
+            <p className="small muted" style={{margin:0}}>Try it yourself first. Then open the solution.</p>
+            <details style={{marginTop:8}}>
+              <summary style={{cursor:'pointer',fontWeight:600}}>Show solution</summary>
+              <Code text={e.s}/>
+            </details>
+          </div>
+        </details>
+      ))}
+    </div>
+  );
+}
+function Practice({progress,setProgress}){
+  const [mode,setMode]=useState('quiz');
+  return (
+    <div>
+      <div className="sec-head"><h2>Practice</h2><p>Test yourself, then check your answers. Wrong answers teach more than right ones \u2014 they get queued in "Missed questions".</p></div>
+      <div className="filters">
+        <button className="pill" aria-pressed={mode==='quiz'} onClick={()=>setMode('quiz')}>Quiz</button>
+        <button className="pill" aria-pressed={mode==='ex'} onClick={()=>setMode('ex')}>Coding exercises</button>
+      </div>
+      {mode==='quiz'?<Quiz progress={progress} setProgress={setProgress}/>:<Exercises/>}
+    </div>
+  );
+}
+
+/* ---- cheatsheets ---- */
+function Cheats(){
+  const [cat,setCat]=useState('Excel');
+  const [q,setQ]=useState('');
+  const query=q.trim().toLowerCase();
+  const items=query
+    ? Object.entries(CHEATS).flatMap(([k,v])=>v.map(x=>[k,...x])).filter(x=>(x[1]+x[2]).toLowerCase().includes(query))
+    : CHEATS[cat].map(x=>[cat,...x]);
+  return (
+    <div>
+      <div className="sec-head"><h2>Cheatsheets</h2><p>Copy-ready snippets for the things analysts type every day, across all four tools.</p></div>
+      <div className="filters">
+        {Object.keys(CHEATS).map(c=>(
+          <button key={c} className="pill" aria-pressed={!query&&c===cat} onClick={()=>{setCat(c);setQ('')}}>{c}</button>
+        ))}
+        <input type="search" placeholder="Search all snippets (e.g. merge, XLOOKUP, CALCULATE)" value={q} onChange={e=>setQ(e.target.value)} aria-label="Search snippets"/>
+      </div>
+      {items.length===0 ? <p className="muted">Nothing matches "{q}". Try a shorter word.</p> : (
+        <div className="cheat-grid">
+          {items.map((x,i)=>(
+            <div className="card" key={i}>
+              <h3>{x[1]}</h3>
+              {query && <span className="chip">{x[0]}</span>}
+              <Code text={x[2]}/>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ---- interview ---- */
+function Interview({progress,toggle}){
+  const [cat,setCat]=useState('All');
+  const cats=['All',...new Set(CARDS.map(c=>c[0]))];
+  const known=Object.values(progress.cards).filter(Boolean).length;
+  return (
+    <div>
+      <div className="sec-head"><h2>Interview prep</h2><p>Answer out loud before opening each card. Tick the ones you could answer in under a minute. {known}/{CARDS.length} ready.</p></div>
+      <div className="filters">{cats.map(c=><button key={c} className="pill" aria-pressed={c===cat} onClick={()=>setCat(c)}>{c}</button>)}</div>
+      {CARDS.map((c,i)=>{
+        if(cat!=='All'&&c[0]!==cat) return null;
+        const on=!!progress.cards[i];
+        return (
+          <details className={"row"+(on?" done":"")} key={i}>
+            <summary><span className="dn">{c[0]}</span><span className="ttl">{c[1]}</span></summary>
+            <div className="body">
+              <p style={{margin:'12px 0'}}>{c[2]}</p>
+              <label className={"ck"+(on?" on":"")}>
+                <input type="checkbox" checked={on} onChange={()=>toggle('cards',i)}/>
+                <span>I can answer this confidently</span>
+              </label>
+            </div>
+          </details>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ---- career: resume generator ---- */
+function genBullets(p){
+  const skills=p.skills.join(', ');
+  const talk=p.talk.replace(/^"|"$/g,'');
+  return [
+    `Built ${p.name.toLowerCase()} using ${skills}, delivering ${p.deliver.toLowerCase()}.`,
+    `Applied ${p.skills[0]}${p.skills[1]?(' and '+p.skills[1]):''} on ${p.data.toLowerCase()} to uncover actionable insights for stakeholders.`,
+    talk.charAt(0).toUpperCase()+talk.slice(1)
+  ];
+}
+function ResumeGenerator(){
+  const [pid,setPid]=useState(PROJECTS[3].id);
+  const p=PROJECTS.find(x=>x.id===pid);
+  const bullets=genBullets(p);
+  return (
+    <div className="card">
+      <h3>Resume bullet generator</h3>
+      <p className="muted small">Pick a project, get draft bullets, then edit in your own words and add your real numbers.</p>
+      <select value={pid} onChange={e=>setPid(e.target.value)} style={{marginTop:6}}>
+        {PROJECTS.map(pr=><option key={pr.id} value={pr.id}>{pr.name}</option>)}
+      </select>
+      <div style={{marginTop:12}}>
+        {bullets.map((b,i)=>(
+          <div key={i} style={{display:'flex',gap:8,alignItems:'flex-start',marginBottom:8}}>
+            <p style={{margin:0,flex:1,fontSize:'.9rem'}}>{'\u2022 '+b}</p>
+            <button className="btn alt sm" onClick={(e)=>copyText(b,e.currentTarget)}>Copy</button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+function JdMatcher(){
+  const [jd,setJd]=useState('');
+  const lower=jd.toLowerCase();
+  const matched=KEYWORDS.filter(k=>lower.includes(k.toLowerCase()));
+  const missing=KEYWORDS.filter(k=>!lower.includes(k.toLowerCase()));
+  return (
+    <div className="card">
+      <h3>Job description keyword matcher</h3>
+      <p className="muted small">Paste a job description. See which analyst keywords it mentions, and which ones you might be missing from your resume.</p>
+      <textarea style={{width:'100%',minHeight:110,marginTop:6}} value={jd} onChange={e=>setJd(e.target.value)} placeholder="Paste a job description here..."/>
+      {jd.trim() && (
+        <div style={{marginTop:12}}>
+          <p className="small" style={{margin:'0 0 6px'}}><strong>Matched ({matched.length})</strong></p>
+          <div className="kwgrid">{matched.length?matched.map(k=><span key={k} className="chip kw-yes">{k}</span>):<span className="small muted">None yet</span>}</div>
+          <p className="small" style={{margin:'12px 0 6px'}}><strong>Consider adding ({missing.length})</strong></p>
+          <div className="kwgrid">{missing.map(k=><span key={k} className="chip kw-no">{k}</span>)}</div>
+        </div>
+      )}
+    </div>
+  );
+}
+function AppTracker({progress,setProgress}){
+  const [form,setForm]=useState({company:'',role:'',date:todayStr(),status:'Applied'});
+  function add(){
+    if(!form.company.trim()) { toast('Add a company name first'); return; }
+    setProgress(p=>({...p,apps:[...p.apps,{...form,id:Date.now()}]}));
+    setForm({company:'',role:'',date:todayStr(),status:'Applied'});
+  }
+  function remove(id){
+    setProgress(p=>({...p,apps:p.apps.filter(a=>a.id!==id)}));
+  }
+  function setStatus(id,status){
+    setProgress(p=>({...p,apps:p.apps.map(a=>a.id===id?{...a,status}:a)}));
+  }
+  return (
+    <div className="card">
+      <h3>Application tracker ({progress.apps.length})</h3>
+      <div className="appform">
+        <input type="text" placeholder="Company" value={form.company} onChange={e=>setForm({...form,company:e.target.value})}/>
+        <input type="text" placeholder="Role" value={form.role} onChange={e=>setForm({...form,role:e.target.value})}/>
+        <input type="date" value={form.date} onChange={e=>setForm({...form,date:e.target.value})}/>
+        <select value={form.status} onChange={e=>setForm({...form,status:e.target.value})}>
+          {['Applied','Interviewing','Offer','Rejected'].map(s=><option key={s}>{s}</option>)}
+        </select>
+        <button className="btn sm" onClick={add}>Add</button>
+      </div>
+      {progress.apps.length>0 && (
+        <div style={{overflowX:'auto'}}>
+          <table className="apptable">
+            <thead><tr><th>Company</th><th>Role</th><th>Date</th><th>Status</th><th></th></tr></thead>
+            <tbody>
+              {progress.apps.map(a=>(
+                <tr key={a.id}>
+                  <td>{a.company}</td><td>{a.role||'\u2014'}</td><td>{a.date}</td>
+                  <td><select value={a.status} onChange={e=>setStatus(a.id,e.target.value)}>{['Applied','Interviewing','Offer','Rejected'].map(s=><option key={s}>{s}</option>)}</select></td>
+                  <td><button className="del" onClick={()=>remove(a.id)} aria-label="Remove">\u2715</button></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ---- career ---- */
+function Career({progress,toggle,setProgress}){
+  return (
+    <div>
+      <div className="sec-head"><h2>Career kit</h2><p>Projects get you noticed. These tools get you the interview.</p></div>
+      <div className="cheat-grid">
+        <ResumeGenerator/>
+        <JdMatcher/>
+      </div>
+      <div style={{marginTop:12}}><AppTracker progress={progress} setProgress={setProgress}/></div>
+      <div className="cheat-grid" style={{marginTop:12}}>
+        {Object.entries(CAREER).map(([g,items])=>{
+          const dn=items.filter((_,i)=>progress.career[g+'-'+i]).length;
+          return (
+            <div className="card" key={g}>
+              <h3>{g} <span className="small muted">{dn}/{items.length}</span></h3>
+              {items.map((x,i)=>{
+                const k=g+'-'+i, on=!!progress.career[k];
+                return (
+                  <label className={"ck"+(on?" on":"")} key={i}>
+                    <input type="checkbox" checked={on} onChange={()=>toggle('career',k)}/>
+                    <span>{x}</span>
+                  </label>
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
+      <h3 style={{margin:'30px 0 4px'}}>README template for every project</h3>
+      <p className="muted small">Copy this into each repository and fill it in.</p>
+      <Code text={README}/>
+      <h3 style={{margin:'30px 0 10px'}}>Free resources</h3>
+      <div className="linkgrid">
+        {LINKS.map(l=><a key={l[0]} href={l[2]} target="_blank" rel="noopener noreferrer">{l[0]}<small>{l[1]}</small></a>)}
+      </div>
+    </div>
+  );
+}
+
+/* ================= app ================= */
+function App(){
+  const [view,setView]=useState('home');
+  const [progress,setProgress]=useState(loadState());
+  const [theme,setTheme]=useState(()=>{try{return localStorage.getItem('ap2-theme')||''}catch(e){return ''}});
+
+  useEffect(()=>{saveState(progress)},[progress]);
+  useEffect(()=>{
+    if(theme) document.documentElement.setAttribute('data-theme',theme);
+    try{localStorage.setItem('ap2-theme',theme)}catch(e){}
+  },[theme]);
+
+  function toggle(section,key){
+    setProgress(p=>{
+      const willBeOn=!p[section][key];
+      const next={...p,[section]:{...p[section],[key]:willBeOn}};
+      if(willBeOn) next.activity={...p.activity,[todayStr()]:true};
+      return next;
+    });
+  }
+  function setNote(key,value){
+    setProgress(p=>({...p,notes:{...p.notes,[key]:value}}));
+  }
+  const stepCount=useMemo(()=>PROJECTS.reduce((n,p)=>n+p.steps.length,0),[]);
+  const careerCount=useMemo(()=>Object.values(CAREER).reduce((n,a)=>n+a.length,0),[]);
+  const all=TOTAL_DAYS+stepCount+careerCount;
+  const done=Object.values(progress.days).filter(Boolean).length+Object.values(progress.steps).filter(Boolean).length+Object.values(progress.career).filter(Boolean).length;
+  const pct=Math.round(100*done/all)||0;
+  const nextDay=(()=>{for(let i=1;i<=TOTAL_DAYS;i++) if(!progress.days[i]) return i; return null})();
+
+  useEffect(()=>{window.scrollTo(0,0)},[view]);
+
+  let body;
+  if(view==='home') body=<Home setView={setView} pct={pct} nextDay={nextDay} progress={progress} setProgress={setProgress}/>;
+  else if(view==='roadmap') body=<Roadmap progress={progress} toggle={toggle} setNote={setNote}/>;
+  else if(view==='sql') body=<SqlSandbox/>;
+  else if(view==='projects') body=<Projects progress={progress} toggle={toggle} setNote={setNote}/>;
+  else if(view==='practice') body=<Practice progress={progress} setProgress={setProgress}/>;
+  else if(view==='cheats') body=<Cheats/>;
+  else if(view==='interview') body=<Interview progress={progress} toggle={toggle}/>;
+  else body=<Career progress={progress} toggle={toggle} setProgress={setProgress}/>;
+
+  return (
+    <React.Fragment>
+      <Header view={view} setView={setView} pct={pct} theme={theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')} setTheme={setTheme}/>
+      <main><div className="wrap">{body}</div></main>
+      <footer><div className="wrap">Built with React. Your progress is saved in this browser only \u2014 export it from the Start tab to back it up, or clearing site data resets it.</div></footer>
+    </React.Fragment>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
